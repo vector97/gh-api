@@ -1,0 +1,114 @@
+.hidden {
+  display: none;
+}
+
+.page {
+  padding: 70px 0;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  color: #000000;
+
+  background-color: #c4c4c4;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 500px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.search-form {
+  max-width: 100%;
+}
+
+.search-form__input {
+  max-width: 100%;
+  padding: 5px 10px;
+
+  font-size: 48px;
+
+  border: none;
+  outline: none;
+  background-color: #ffffff;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
+.results {
+  margin: 0;
+  padding: 0;
+  background-color: #e3e3e3;
+  list-style-type: none;
+}
+
+.results__item {
+  padding: 5px 10px;
+
+  font-size: 30px;
+  border: 2px solid #000000;
+
+  cursor: pointer;
+}
+
+.results__item:hover,
+.results__item--active {
+  background-color: #65cdf9;
+}
+
+.list {
+  width: 100%;
+  margin: 45px 0 0 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.list__item {
+  position: relative;
+
+  padding: 10px 15px;
+  border: 1px solid #000000;
+  background-color: #e27beb;
+}
+
+.repo__delete {
+  position: absolute;
+  top: 50%;
+  right: 34px;
+
+  width: 44px;
+  height: 41px;
+  padding: 0;
+
+  border: none;
+  background: transparent url("../img/delete.svg") 50% 50% no-repeat;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.repo__delete svg {
+  display: block;
+}
+
+.info {
+  padding: 0;
+  list-style-type: none;
+}
+
+.info__item a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.info__item a:hover {
+  text-decoration: underline;
+}
