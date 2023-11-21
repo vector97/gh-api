@@ -1,3 +1,4 @@
+import { createElement } from "./helpers/createElement.js";
 import listControl from "./listControl.js";
 const { addListItem } = listControl();
 
@@ -49,16 +50,19 @@ const inputControl = () => {
 
   function renderResults(data) {
     results.innerHTML = "";
+    const fragment = new DocumentFragment();
 
     data.map((item, index) => {
-      results.insertAdjacentHTML(
-        "beforeend",
-        `
-          <li class="results__item" data-index=${index}>${item.name}</li>
-        `
-      );
+      const hint = createElement("li", {
+        className: "results__item",
+        textContent: item.name,
+      });
+      hint.dataset.index = index;
+
+      fragment.append(hint);
     });
 
+    results.append(fragment);
     results.classList.remove("hidden");
   }
 

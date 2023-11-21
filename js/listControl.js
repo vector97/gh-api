@@ -1,3 +1,5 @@
+import { createElement } from "./helpers/createElement.js";
+
 const listControl = () => {
   const list = document.querySelector(".list");
 
@@ -8,24 +10,48 @@ const listControl = () => {
   });
 
   function addListItem(item) {
-    list.insertAdjacentHTML(
-      "beforeend",
-      `
-        <li class="list__item repo">
-          <ul class="repo__info info">
-            <li class="info__item">
-              <a href="${item.html_url}" target="_blank" rel="noopener noreferrer">
-                ${item.name}
-              </a>
-            </li>
-            <li class="info__item">Owner: ${item.owner.login}</li>
-            <li class="info__item">Stars: ${item.stargazers_count}</li>
-          </ul>
+    const listItem = createElement("li", {
+      className: "list__item repo",
+    });
 
-          <button class="repo__delete" type="button"></button>
-        </li>
-      `
-    );
+    const infoList = createElement("ul", {
+      className: "repo__info info",
+    });
+
+    const nameItem = createElement("li", {
+      className: "info__item",
+    });
+    const nameLink = createElement("a", {
+      href: item.html_url,
+      target: "_blank",
+      rel: "noopener noreferrer",
+      innerText: item.name,
+    });
+    nameItem.appendChild(nameLink);
+
+    const ownerItem = createElement("li", {
+      className: "info__item",
+      innerText: `Owner: ${item.owner.login}`,
+    });
+
+    const starsItem = createElement("li", {
+      className: "info__item",
+      innerText: `Stars: ${item.stargazers_count}`,
+    });
+
+    infoList.appendChild(nameItem);
+    infoList.appendChild(ownerItem);
+    infoList.appendChild(starsItem);
+
+    const deleteButton = createElement("button", {
+      className: "repo__delete",
+      type: "button",
+    });
+
+    listItem.appendChild(infoList);
+    listItem.appendChild(deleteButton);
+
+    list.append(listItem);
   }
 
   return { addListItem };
